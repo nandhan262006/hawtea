@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react'
 import {
   Menu as MenuIcon,
@@ -10,7 +12,6 @@ import {
   Instagram,
   MessageCircle,
   Star,
-  UtensilsCrossed,
 } from 'lucide-react'
 
 const A = (p: string) => `/assets/${p}`
@@ -112,7 +113,7 @@ function Ikkada() {
           Nadusthundi...
         </h2>
         <p className="font-type text-[13px] leading-relaxed text-[#3d2c1a] mt-4 max-w-[260px]">
-          A small escape from the busy world. Good tea, good people, and a 90's vibe that feels like
+          A small escape from the busy world. Good tea, good people, and a 90&apos;s vibe that feels like
           home.
         </p>
       </div>
@@ -278,7 +279,7 @@ function Nostalgia() {
     <section className="paper relative overflow-hidden pt-14 pb-14 torn-bottom">
       <div className="px-7">
         <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2">
-          90's <span className="underline decoration-wavy decoration-[#b8692a] underline-offset-4">Nostalgia</span>
+          90&apos;s <span className="underline decoration-wavy decoration-[#b8692a] underline-offset-4">Nostalgia</span>
         </h2>
         <p className="font-hand italic text-lg text-[#4a3220] mt-2 ml-2">
           Before Playlists...
@@ -347,7 +348,7 @@ function RealHawTea() {
         <p className="font-type text-[11px] tracking-[0.14em] text-[#5d4529] mt-1">
           THE DOODLES ARE IMAGINARY.
           <br />
-          THE PLACE ISN'T.
+          THE PLACE ISN&apos;T.
         </p>
       </div>
 
@@ -584,7 +585,7 @@ function Footer() {
             <Instagram size={24} />
           </a>
           <a href={ZOMATO_URL} target="_blank" rel="noreferrer" aria-label="Zomato" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
-            <UtensilsCrossed size={24} />
+            <img src={A('zomato.png')} alt="" className="w-6 h-6 rounded-md" />
           </a>
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
             <MessageCircle size={24} />
@@ -624,6 +625,15 @@ export default function Home() {
         <Visit />
         <Gallery />
         <Footer />
+        <a
+          href={ZOMATO_URL}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Order on Zomato"
+          className="fixed bottom-6 right-4 z-40 sm:right-[max(1rem,calc(50%-15rem+1rem))] flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.45)] ring-1 ring-black/10 transition-transform hover:scale-105 active:scale-95"
+        >
+          <img src={A('zomato.png')} alt="" className="h-11 w-11 object-contain" />
+        </a>
       </main>
     </div>
   )
