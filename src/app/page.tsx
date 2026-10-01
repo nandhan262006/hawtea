@@ -23,16 +23,43 @@ const WHATSAPP_URL = 'https://wa.me/919849800079'
 
 function Header() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-center px-5 pt-4">
-      <div className="text-center">
-        <img src={A('logo.png')} alt="HawTea" className="h-11 w-auto mx-auto" />
+    <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-center px-5 pt-4 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:px-10 lg:pt-6">
+      <div className="text-center lg:justify-self-start lg:text-left">
+        <img src={A('logo.png')} alt="HawTea" className="h-11 w-auto mx-auto lg:mx-0" />
         <p className="font-hand text-[13px] leading-none text-[#4a3220] italic mt-0.5">
           The Taste of Nostalgia
         </p>
       </div>
+      <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
+        {[
+          ['Home', '#home'],
+          ['Ooru', '#ooru'],
+          ['Menu', '#menu'],
+          ['Gallery', '#gallery'],
+          ['Visit', '#visit'],
+        ].map(([label, href]) => (
+          <a
+            key={label}
+            href={href}
+            className="font-type text-[13px] uppercase tracking-[0.12em] text-[#4a3220] hover:underline underline-offset-4 min-h-[44px] inline-flex items-center"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+      <div className="hidden lg:flex lg:justify-self-end">
+        <a
+          href={ZOMATO_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="btn-brown font-hand text-lg px-6 py-2 inline-flex items-center gap-2"
+        >
+          Order <ArrowRight size={18} />
+        </a>
+      </div>
       <button
         aria-label="Menu"
-        className="absolute right-5 top-4 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#2e2318]"
+        className="absolute right-5 top-4 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#2e2318] lg:hidden"
       >
         <MenuIcon size={30} strokeWidth={2.2} />
       </button>
@@ -42,53 +69,57 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="paper relative overflow-hidden pt-24 pb-10 torn-bottom">
+    <section id="home" className="paper relative overflow-hidden pt-24 pb-10 torn-bottom lg:pt-32">
       <img
         src={A('palm-left.png')}
         alt=""
-        className="pointer-events-none absolute -top-2 -left-4 w-32 sway"
+        className="pointer-events-none absolute -top-2 -left-4 w-32 sway lg:w-44"
       />
       <img
         src={A('palm-right.png')}
         alt=""
-        className="pointer-events-none absolute top-24 -right-6 w-28 sway"
+        className="pointer-events-none absolute top-24 -right-6 w-28 sway lg:w-40"
       />
-      <div className="relative px-7 pt-8">
-        <h1 className="font-hand font-semibold text-[#2e2318] text-[44px] leading-[1.05] -rotate-2">
-          Oka Tea...
-          <br />
-          Oka Gnapakam.
-        </h1>
-        <p className="font-hand italic text-[#4a3220] text-lg mt-2 ml-10 -rotate-2">
-          The Taste of Nostalgia
-        </p>
-      </div>
+      <div className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-8 lg:px-10">
+        <div>
+          <div className="relative px-7 pt-8 lg:px-0 lg:pt-0">
+            <h1 className="font-hand font-semibold text-[#2e2318] text-[44px] leading-[1.05] -rotate-2 lg:text-[64px]">
+              Oka Tea...
+              <br />
+              Oka Gnapakam.
+            </h1>
+            <p className="font-hand italic text-[#4a3220] text-lg mt-2 ml-10 -rotate-2 lg:text-xl">
+              The Taste of Nostalgia
+            </p>
+          </div>
 
-      <div className="relative mt-6 px-2">
-        <img
-          src={A('hero-hut.jpg')}
-          alt="HawTea hut at dusk"
-          className="w-full object-cover shadow-lg"
-          style={{ clipPath: 'polygon(0 4%, 5% 0, 96% 2%, 100% 6%, 99% 96%, 94% 100%, 4% 98%, 0 93%)' }}
-        />
-      </div>
+          <div className="relative flex items-end gap-4 px-7 mt-2 lg:px-0 lg:mt-4">
+            <img src={A('tea-glass.png')} alt="" className="w-16 -mt-6 lg:w-20" />
+            <p className="font-hand italic text-[#4a3220] text-xl leading-tight -rotate-2 pb-2 lg:text-2xl">
+              Tea ki raavali...
+              <br />
+              Time ki kaadhu...
+            </p>
+          </div>
 
-      <div className="relative flex items-end gap-4 px-7 mt-2">
-        <img src={A('tea-glass.png')} alt="" className="w-16 -mt-6" />
-        <p className="font-hand italic text-[#4a3220] text-xl leading-tight -rotate-2 pb-2">
-          Tea ki raavali...
-          <br />
-          Time ki kaadhu...
-        </p>
-      </div>
+          <div className="px-7 mt-5 lg:px-0">
+            <a
+              href="#visit"
+              className="btn-brown font-hand text-xl px-8 py-3 inline-flex items-center gap-2"
+            >
+              Explore HawTea <ArrowRight size={20} />
+            </a>
+          </div>
+        </div>
 
-      <div className="px-7 mt-5">
-        <a
-          href="#visit"
-          className="btn-brown font-hand text-xl px-8 py-3 inline-flex items-center gap-2"
-        >
-          Explore HawTea <ArrowRight size={20} />
-        </a>
+        <div className="relative mt-6 px-2 lg:mt-0 lg:px-0">
+          <img
+            src={A('hero-hut.jpg')}
+            alt="HawTea hut at dusk"
+            className="w-full object-cover shadow-lg"
+            style={{ clipPath: 'polygon(0 4%, 5% 0, 96% 2%, 100% 6%, 99% 96%, 94% 100%, 4% 98%, 0 93%)' }}
+          />
+        </div>
       </div>
 
       <div className="mt-7 flex flex-col items-center gap-1 text-[#4a3220]">
@@ -104,26 +135,28 @@ function Hero() {
 function Ikkada() {
   return (
     <section className="paper relative overflow-hidden pt-14 pb-12 torn-bottom">
-      <div className="px-7">
-        <h2 className="font-hand font-semibold text-[#2e2318] text-[40px] leading-[1.05] -rotate-2">
-          Ikkada
-          <br />
-          Time Slow ga
-          <br />
-          Nadusthundi...
-        </h2>
-        <p className="font-type text-[13px] leading-relaxed text-[#3d2c1a] mt-4 max-w-[260px]">
-          A small escape from the busy world. Good tea, good people, and a 90&apos;s vibe that feels like
-          home.
-        </p>
-      </div>
-      <div className="relative mt-4 flex items-end justify-center gap-2 px-6">
-        <img src={A('signpost.png')} alt="" className="w-28 -ml-2 shrink-0" />
-        <img
-          src={A('ooru-tea-angadi.png')}
-          alt="The Tea Angadi"
-          className="w-56 shrink-0 -ml-4"
-        />
+      <div className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 lg:px-10">
+        <div className="px-7 lg:px-0">
+          <h2 className="font-hand font-semibold text-[#2e2318] text-[40px] leading-[1.05] -rotate-2 lg:text-[56px]">
+            Ikkada
+            <br />
+            Time Slow ga
+            <br />
+            Nadusthundi...
+          </h2>
+          <p className="font-type text-[13px] leading-relaxed text-[#3d2c1a] mt-4 max-w-[260px] lg:max-w-[400px] lg:text-[15px]">
+            A small escape from the busy world. Good tea, good people, and a 90&apos;s vibe that feels like
+            home.
+          </p>
+        </div>
+        <div className="relative mt-4 flex items-end justify-center gap-2 px-6 lg:mt-0 lg:px-0">
+          <img src={A('signpost.png')} alt="" className="w-28 -ml-2 shrink-0 lg:w-40" />
+          <img
+            src={A('ooru-tea-angadi.png')}
+            alt="The Tea Angadi"
+            className="w-56 shrink-0 -ml-4 lg:w-72"
+          />
+        </div>
       </div>
     </section>
   )
@@ -138,21 +171,21 @@ const ooruSpots = [
 
 function Ooru() {
   return (
-    <section className="paper relative overflow-hidden pt-14 pb-12 torn-bottom">
+    <section id="ooru" className="paper relative overflow-hidden pt-14 pb-12 torn-bottom">
       <img
         src={A('palm-left.png')}
         alt=""
         className="pointer-events-none absolute top-4 -left-8 w-24 opacity-80"
       />
-      <div className="px-7">
-        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2">
+      <div className="px-7 lg:px-10">
+        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 lg:text-[52px]">
           Explore Our Ooru
         </h2>
-        <p className="font-type text-[12px] text-[#3d2c1a] mt-1 ml-4">
+        <p className="font-type text-[12px] text-[#3d2c1a] mt-1 ml-4 lg:text-[13px]">
           Tap to explore different spots at HawTea
         </p>
       </div>
-      <ul className="mt-6 px-6 space-y-4">
+      <ul className="mt-6 px-6 space-y-4 lg:grid lg:grid-cols-2 lg:gap-4 lg:space-y-0 lg:px-10">
         {ooruSpots.map((s) => (
           <li key={s.title}>
             <button className="w-full flex items-center gap-4 text-left min-h-[64px] group">
@@ -176,14 +209,14 @@ function Ooru() {
         ))}
       </ul>
 
-      <div className="relative mt-10 px-2">
+      <div className="relative mt-10 px-2 lg:px-10">
         <img
           src={A('pavilion.jpg')}
           alt="HawTea pavilion at night"
           className="w-full object-cover shadow-lg"
           style={{ clipPath: 'polygon(0 3%, 6% 0, 95% 2%, 100% 5%, 99% 95%, 93% 100%, 5% 98%, 0 94%)' }}
         />
-        <p className="font-hand italic text-[#4a3220] text-xl text-right pr-8 mt-2 -rotate-2">
+        <p className="font-hand italic text-[#4a3220] text-xl text-right pr-8 mt-2 -rotate-2 lg:text-2xl lg:pr-12">
           Same Ooru...
           <br />
           New Memories...
@@ -205,9 +238,9 @@ const menuTabs = ['Tea', 'Snacks', 'Tiffins', 'Beverages']
 function MenuSection() {
   const [tab, setTab] = useState('Tea')
   return (
-    <section className="paper relative overflow-hidden pt-14 pb-14 torn-bottom torn-top torn-top-deep">
+    <section id="menu" className="paper relative overflow-hidden pt-14 pb-14 torn-bottom torn-top torn-top-deep">
       <div className="px-7 text-center relative">
-        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 inline-block">
+        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 inline-block lg:text-[52px]">
           Our Menu
           <svg viewBox="0 0 60 24" className="inline-block w-10 ml-1 -mt-2 text-[#4a3220]" fill="none" stroke="currentColor" strokeWidth="1.6">
             <path d="M6 18 Q 18 4 30 14 Q 42 24 54 8" />
@@ -219,7 +252,7 @@ function MenuSection() {
         </p>
       </div>
 
-      <div className="mt-5 px-6 flex gap-2 overflow-x-auto no-scrollbar">
+      <div className="mt-5 px-6 flex gap-2 overflow-x-auto no-scrollbar lg:justify-center lg:px-10">
         {menuTabs.map((t) => (
           <button
             key={t}
@@ -235,7 +268,7 @@ function MenuSection() {
         ))}
       </div>
 
-      <div className="relative mx-5 mt-5 sketch-card px-5 pt-4 pb-6 rotate-[0.4deg]">
+      <div className="relative mx-5 mt-5 sketch-card px-5 pt-4 pb-6 rotate-[0.4deg] lg:mx-auto lg:max-w-[620px] lg:px-8">
         <ul className="divide-y divide-[#4a3220]/20">
           {menuItems.map((m) => (
             <li key={m.name} className="flex items-center gap-4 py-3.5">
@@ -277,20 +310,20 @@ function Nostalgia() {
   }, [i])
   return (
     <section className="paper relative overflow-hidden pt-14 pb-14 torn-bottom">
-      <div className="px-7">
-        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2">
+      <div className="px-7 lg:px-10">
+        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 lg:text-[52px]">
           90&apos;s <span className="underline decoration-wavy decoration-[#b8692a] underline-offset-4">Nostalgia</span>
         </h2>
-        <p className="font-hand italic text-lg text-[#4a3220] mt-2 ml-2">
+        <p className="font-hand italic text-lg text-[#4a3220] mt-2 ml-2 lg:text-xl">
           Before Playlists...
           <br />
           There was one Radio.
         </p>
       </div>
-      <div className="relative mt-4 px-7">
+      <div className="relative mt-4 px-7 lg:px-10">
         <img src={A('radio.png')} alt="Vintage radio" className="w-40 ml-auto" />
       </div>
-      <div className="relative mt-2 flex items-center gap-3 px-4">
+      <div className="relative mt-2 flex items-center gap-3 px-4 lg:px-10">
         <button
           onClick={prev}
           aria-label="Previous"
@@ -298,7 +331,7 @@ function Nostalgia() {
         >
           <ArrowLeft size={18} />
         </button>
-        <div ref={strip} className="flex flex-1 items-end gap-4 overflow-x-auto no-scrollbar py-1">
+        <div ref={strip} className="flex flex-1 items-end gap-4 overflow-x-auto no-scrollbar py-1 lg:justify-center lg:gap-6 lg:overflow-visible">
           {nostalgiaItems.map((n, idx) => (
             <button
               key={n.label}
@@ -306,16 +339,16 @@ function Nostalgia() {
               onClick={() => setI(idx)}
               aria-label={`Show ${n.label}`}
               aria-current={idx === i}
-              className={`shrink-0 w-[86px] flex flex-col items-center gap-1 transition-opacity ${
+              className={`shrink-0 w-[86px] lg:w-[120px] flex flex-col items-center gap-1 transition-opacity ${
                 idx === i ? 'opacity-100' : 'opacity-60'
               }`}
             >
               <img
                 src={A(n.img)}
                 alt={n.label}
-                className={`w-full object-contain ${idx === i ? 'h-24' : 'h-16'}`}
+                className={`w-full object-contain ${idx === i ? 'h-24 lg:h-32' : 'h-16 lg:h-20'}`}
               />
-              <span className="font-hand text-lg text-[#4a3220]">{n.label}</span>
+              <span className="font-hand text-lg text-[#4a3220] lg:text-xl">{n.label}</span>
             </button>
           ))}
         </div>
@@ -344,7 +377,7 @@ function RealHawTea() {
   return (
     <section className="paper relative overflow-hidden pt-14 pb-14 torn-bottom">
       <div className="px-7 text-center">
-        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2">Real HawTea</h2>
+        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 lg:text-[52px]">Real HawTea</h2>
         <p className="font-type text-[11px] tracking-[0.14em] text-[#5d4529] mt-1">
           THE DOODLES ARE IMAGINARY.
           <br />
@@ -352,13 +385,13 @@ function RealHawTea() {
         </p>
       </div>
 
-      <div className="relative mt-7 mx-6">
+      <div className="relative mt-7 mx-6 lg:mx-auto lg:max-w-[600px]">
         <div className={`polaroid relative ${realPhotos[i].rot} transition-transform`}>
           <div className="tape -top-3 left-1/2 -translate-x-1/2 -rotate-2" />
           <img
             src={A(realPhotos[i].img)}
             alt={realPhotos[i].caption}
-            className="w-full h-56 object-cover"
+            className="w-full h-56 object-cover lg:h-80"
           />
           <p className="font-hand italic text-xl text-[#4a3220] text-right mt-2 pr-3 -rotate-2">
             {realPhotos[i].caption}
@@ -404,10 +437,10 @@ function PeopleSay() {
   const t = testimonials[i]
   return (
     <section className="paper relative overflow-hidden pt-14 pb-10 torn-bottom">
-      <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 px-7">
+      <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 px-7 lg:px-10 lg:text-[52px]">
         What People Say
       </h2>
-      <div className="relative mt-6 mx-8">
+      <div className="relative mt-6 mx-8 lg:mx-auto lg:max-w-[560px]">
         <div className="sketch-card relative px-6 py-6 -rotate-1">
           <span className="font-hand text-[64px] leading-none text-[#4a3220] absolute -top-4 left-3">
             “
@@ -437,7 +470,7 @@ function PeopleSay() {
           <ArrowRight size={16} />
         </button>
       </div>
-      <div className="px-7 mt-7">
+      <div className="px-7 mt-7 lg:px-10 lg:text-center">
         <button className="btn-brown font-hand text-lg px-7 py-2.5 inline-flex items-center gap-2">
           More Memories <ArrowRight size={18} />
         </button>
@@ -455,82 +488,88 @@ function Visit() {
         alt=""
         className="pointer-events-none absolute top-8 -right-8 w-24 opacity-80"
       />
-      <div className="px-7">
-        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2">
+      <div className="px-7 lg:px-10">
+        <h2 className="font-hand font-semibold text-[#2e2318] text-[38px] -rotate-2 lg:text-[52px]">
           Plan Your Visit
         </h2>
-        <p className="font-hand italic text-xl text-[#4a3220] ml-3 -rotate-2">
+        <p className="font-hand italic text-xl text-[#4a3220] ml-3 -rotate-2 lg:text-2xl">
           Ooru ki ela raavali?
         </p>
       </div>
 
-      <div className="relative mt-5 px-2">
-        <img
-          src={A('signboard.jpg')}
-          alt="HawTea neon signboard at night"
-          className="w-full object-cover shadow-lg"
-          style={{ clipPath: 'polygon(0 4%, 6% 0, 94% 2%, 100% 5%, 99% 95%, 95% 100%, 4% 98%, 0 94%)' }}
-        />
-      </div>
-
-      <div className="px-7 mt-5 flex gap-3">
-        <MapPin size={26} className="text-[#4a3220] shrink-0 mt-1" />
+      <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:px-10 lg:mt-6">
         <div>
-          <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">
-            Khanapur, Hyderabad
-          </p>
-          <p className="font-type text-[11px] text-[#5d4529]">(Exact location on Maps)</p>
-          <a
-            href={MAPS_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="font-hand italic text-lg text-[#4a3220] underline-hand inline-flex items-center gap-2 mt-1 min-h-[44px]"
-          >
-            Open in Maps <ArrowRight size={18} />
-          </a>
-        </div>
-      </div>
+          <div className="relative mt-5 px-2 lg:mt-0 lg:px-0">
+            <img
+              src={A('signboard.jpg')}
+              alt="HawTea neon signboard at night"
+              className="w-full object-cover shadow-lg"
+              style={{ clipPath: 'polygon(0 4%, 6% 0, 94% 2%, 100% 5%, 99% 95%, 95% 100%, 4% 98%, 0 94%)' }}
+            />
+          </div>
 
-      <div className="px-6 mt-2">
-        <img src={A('map.jpg')} alt="Hand drawn map to HawTea" className="w-full rounded-lg" />
-      </div>
+          <div className="px-7 mt-5 flex gap-3 lg:px-0">
+            <MapPin size={26} className="text-[#4a3220] shrink-0 mt-1" />
+            <div>
+              <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">
+                Khanapur, Hyderabad
+              </p>
+              <p className="font-type text-[11px] text-[#5d4529]">(Exact location on Maps)</p>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="font-hand italic text-lg text-[#4a3220] underline-hand inline-flex items-center gap-2 mt-1 min-h-[44px]"
+              >
+                Open in Maps <ArrowRight size={18} />
+              </a>
+            </div>
+          </div>
 
-      <div className="px-6 mt-5 space-y-4">
-        <div className="sketch-card flex items-center gap-4 px-5 py-4">
-          <Clock size={30} className="text-[#4a3220] shrink-0" />
-          <div>
-            <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">Timings</p>
-            <p className="font-type text-[13px] text-[#3d2c1a]">10:00 AM – 11:00 PM</p>
-            <p className="font-type text-[11px] text-[#5d4529]">(Everyday)</p>
+          <div className="px-6 mt-2 lg:px-0 lg:mt-4">
+            <img src={A('map.jpg')} alt="Hand drawn map to HawTea" className="w-full rounded-lg" />
           </div>
         </div>
-        <div className="sketch-card flex items-center gap-4 px-5 py-4">
-          <Phone size={28} className="text-[#4a3220] shrink-0" />
-          <div>
-            <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">Contact</p>
-            <a href="tel:+919849800079" className="font-type text-[13px] text-[#3d2c1a]">+91 98498 00079</a>
-            <p className="font-type text-[11px] text-[#5d4529]">(For Enquiries)</p>
-          </div>
-        </div>
-        <div className="sketch-card flex items-center gap-4 px-5 py-4">
-          <Users size={30} className="text-[#4a3220] shrink-0" />
-          <div>
-            <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">Come With</p>
-            <p className="font-type text-[13px] text-[#3d2c1a]">Friends, Family</p>
-            <p className="font-type text-[11px] text-[#5d4529]">or Just Your Thoughts.</p>
-          </div>
-        </div>
-      </div>
 
-      <div className="px-7 mt-6 text-center">
-        <a
-          href={MAPS_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-brown font-hand text-xl px-9 py-3 inline-flex items-center gap-2"
-        >
-          Get Directions <ArrowRight size={20} />
-        </a>
+        <div>
+          <div className="px-6 mt-5 space-y-4 lg:px-0 lg:mt-0">
+            <div className="sketch-card flex items-center gap-4 px-5 py-4">
+              <Clock size={30} className="text-[#4a3220] shrink-0" />
+              <div>
+                <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">Timings</p>
+                <p className="font-type text-[13px] text-[#3d2c1a]">10:00 AM – 11:00 PM</p>
+                <p className="font-type text-[11px] text-[#5d4529]">(Everyday)</p>
+              </div>
+            </div>
+            <div className="sketch-card flex items-center gap-4 px-5 py-4">
+              <Phone size={28} className="text-[#4a3220] shrink-0" />
+              <div>
+                <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">Contact</p>
+                <a href="tel:+919849800079" className="font-type text-[13px] text-[#3d2c1a]">+91 98498 00079</a>
+                <p className="font-type text-[11px] text-[#5d4529]">(For Enquiries)</p>
+              </div>
+            </div>
+            <div className="sketch-card flex items-center gap-4 px-5 py-4">
+              <Users size={30} className="text-[#4a3220] shrink-0" />
+              <div>
+                <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">Come With</p>
+                <p className="font-type text-[13px] text-[#3d2c1a]">Friends, Family</p>
+                <p className="font-type text-[11px] text-[#5d4529]">or Just Your Thoughts.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="px-7 mt-6 text-center lg:px-0 lg:mt-8 lg:text-left">
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-brown font-hand text-xl px-9 py-3 inline-flex items-center gap-2"
+            >
+              Get Directions <ArrowRight size={20} />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   )
@@ -547,11 +586,11 @@ const gallery: { img: string; wide: boolean; tall?: boolean }[] = [
 
 function Gallery() {
   return (
-    <section className="paper relative overflow-hidden pt-14 pb-14 torn-bottom">
-      <h2 className="font-hand font-semibold text-[#2e2318] text-[36px] -rotate-2 px-7">
+    <section id="gallery" className="paper relative overflow-hidden pt-14 pb-14 torn-bottom">
+      <h2 className="font-hand font-semibold text-[#2e2318] text-[36px] -rotate-2 px-7 lg:px-10 lg:text-[48px]">
         A Few More Glimpses
       </h2>
-      <div className="px-5 mt-6 grid grid-cols-2 gap-3">
+      <div className="px-5 mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4 lg:px-10">
         {gallery.map((g) => (
           <img
             key={g.img}
@@ -559,7 +598,7 @@ function Gallery() {
             alt="HawTea glimpse"
             className={`rounded-lg shadow-md border-4 border-[#fbf6e9] object-cover w-full ${
               g.tall ? 'col-span-2 h-64' : g.wide ? 'col-span-2 h-44' : 'h-32'
-            }`}
+            } lg:h-56`}
           />
         ))}
       </div>
@@ -579,7 +618,7 @@ function Footer() {
         <img src={A('footer-scene.jpg')} alt="HawTea huts under a starry night" className="w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#120c06]" />
       </div>
-      <div className="bg-[#120c06] px-7 pt-2 pb-6">
+      <div className="bg-[#120c06] px-7 pt-2 pb-6 lg:flex lg:items-center lg:justify-between lg:px-10">
         <div className="flex justify-center gap-6 py-4 text-[#f6ecd7]">
           <a href={INSTA_URL} target="_blank" rel="noreferrer" aria-label="Instagram" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
             <Instagram size={24} />
@@ -594,14 +633,19 @@ function Footer() {
             <MapPin size={24} />
           </a>
         </div>
-        <nav className="flex justify-center gap-7 border-t border-[#f6ecd7]/15 pt-4">
-          {['Home', 'Menu', 'Gallery', 'Visit Us'].map((l) => (
+        <nav className="flex justify-center gap-7 border-t border-[#f6ecd7]/15 pt-4 lg:border-t-0 lg:pt-0">
+          {[
+            ['Home', '#home'],
+            ['Menu', '#menu'],
+            ['Gallery', '#gallery'],
+            ['Visit Us', '#visit'],
+          ].map(([label, href]) => (
             <a
-              key={l}
-              href="#"
+              key={label}
+              href={href}
               className="font-type text-[13px] text-[#f6ecd7]/85 underline underline-offset-4 decoration-[#f6ecd7]/40 min-h-[44px] inline-flex items-center"
             >
-              {l}
+              {label}
             </a>
           ))}
         </nav>
@@ -613,7 +657,7 @@ function Footer() {
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#1a120a] flex justify-center">
-      <main className="relative w-full max-w-[480px] shadow-[0_0_60px_rgba(0,0,0,0.6)]">
+      <main className="relative w-full max-w-[480px] lg:max-w-[1024px] shadow-[0_0_60px_rgba(0,0,0,0.6)]">
         <Header />
         <Hero />
         <Ikkada />
@@ -630,7 +674,7 @@ export default function Home() {
           target="_blank"
           rel="noreferrer"
           aria-label="Order on Zomato"
-          className="fixed bottom-6 right-4 z-40 sm:right-[max(1rem,calc(50%-15rem+1rem))] flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.45)] ring-1 ring-black/10 transition-transform hover:scale-105 active:scale-95"
+          className="fixed bottom-6 right-4 z-40 md:right-[max(1rem,calc(50%_-_15rem_+_1rem))] lg:right-[max(1rem,calc(50%_-_32rem_+_1rem))] flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.45)] ring-1 ring-black/10 transition-transform hover:scale-105 active:scale-95"
         >
           <img src={A('zomato.png')} alt="" className="h-11 w-11 object-contain" />
         </a>
