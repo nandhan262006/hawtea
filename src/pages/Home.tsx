@@ -10,9 +10,15 @@ import {
   Instagram,
   MessageCircle,
   Star,
+  UtensilsCrossed,
 } from 'lucide-react'
 
 const A = (p: string) => `/assets/${p}`
+
+const MAPS_URL = 'https://maps.app.goo.gl/RdzHanY9vPKxQYQ46'
+const INSTA_URL = 'https://www.instagram.com/hawtea.in/'
+const ZOMATO_URL = 'https://zoma.to/r/21980149'
+const WHATSAPP_URL = 'https://wa.me/919849800079'
 
 function Header() {
   return (
@@ -473,9 +479,14 @@ function Visit() {
             Khanapur, Hyderabad
           </p>
           <p className="font-type text-[11px] text-[#5d4529]">(Exact location on Maps)</p>
-          <button className="font-hand italic text-lg text-[#4a3220] underline-hand inline-flex items-center gap-2 mt-1 min-h-[44px]">
+          <a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="font-hand italic text-lg text-[#4a3220] underline-hand inline-flex items-center gap-2 mt-1 min-h-[44px]"
+          >
             Open in Maps <ArrowRight size={18} />
-          </button>
+          </a>
         </div>
       </div>
 
@@ -496,7 +507,7 @@ function Visit() {
           <Phone size={28} className="text-[#4a3220] shrink-0" />
           <div>
             <p className="font-hand font-semibold text-[22px] text-[#2e2318] leading-tight">Contact</p>
-            <p className="font-type text-[13px] text-[#3d2c1a]">+91 98765 43210</p>
+            <a href="tel:+919849800079" className="font-type text-[13px] text-[#3d2c1a]">+91 98498 00079</a>
             <p className="font-type text-[11px] text-[#5d4529]">(For Enquiries)</p>
           </div>
         </div>
@@ -511,9 +522,14 @@ function Visit() {
       </div>
 
       <div className="px-7 mt-6 text-center">
-        <button className="btn-brown font-hand text-xl px-9 py-3 inline-flex items-center gap-2">
+        <a
+          href={MAPS_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="btn-brown font-hand text-xl px-9 py-3 inline-flex items-center gap-2"
+        >
           Get Directions <ArrowRight size={20} />
-        </button>
+        </a>
       </div>
     </section>
   )
@@ -564,13 +580,16 @@ function Footer() {
       </div>
       <div className="bg-[#120c06] px-7 pt-2 pb-6">
         <div className="flex justify-center gap-6 py-4 text-[#f6ecd7]">
-          <a href="#" aria-label="Instagram" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
+          <a href={INSTA_URL} target="_blank" rel="noreferrer" aria-label="Instagram" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
             <Instagram size={24} />
           </a>
-          <a href="#" aria-label="WhatsApp" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
+          <a href={ZOMATO_URL} target="_blank" rel="noreferrer" aria-label="Zomato" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
+            <UtensilsCrossed size={24} />
+          </a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
             <MessageCircle size={24} />
           </a>
-          <a href="#visit" aria-label="Location" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
+          <a href={MAPS_URL} target="_blank" rel="noreferrer" aria-label="Location" className="min-w-[44px] min-h-[44px] flex items-center justify-center">
             <MapPin size={24} />
           </a>
         </div>
